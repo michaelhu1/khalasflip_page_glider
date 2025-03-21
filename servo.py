@@ -4,7 +4,6 @@ from time import sleep
 
 def initialize_motors(servo1, servo2):
     GPIO.setmode(GPIO.BOARD)
-
     GPIO.setup(servo1,GPIO.OUT)  
     flipper = GPIO.PWM(servo1, 50)    
     GPIO.setup(servo2,GPIO.OUT)  
