@@ -15,7 +15,7 @@ def handle_command(command):
 if __name__ == "__main__":
     command_queue = multiprocessing.Queue()
 
-    # Start recognize.py as a separate process
+    # Start recognize.py as a separate process\
     recognize_process = multiprocessing.Process(target=start_listening, args=(command_queue,))
     recognize_process.start()
 
