@@ -31,3 +31,12 @@ def servo_cleanup(wheel, flipper):
     wheel.stop()   
     flipper.stop()             
     GPIO.cleanup()        
+
+def turn_page(wheel, flipper):
+    print("button pressed")
+    turn_wheel(wheel)
+    sleep(0.75)
+    motoroff(wheel,flipper)
+    turn_flipper(flipper)
+    sleep(1.1)
+    motoroff(wheel,flipper)

@@ -1,16 +1,17 @@
-from servo import*
+#from servo import*
+from recognition import*
 import multiprocessing
 import time
 
 servopin1 = 11
 servopin2 = 12
 
-wheel, flipper = initialize_motors(servopin1, servopin2)
+#wheel, flipper = initialize_motors(servopin1, servopin2)
 
 def handle_command(command):
     if command == "next":
         print("Activating servos...")
-        turn_page(wheel, flipper)
+ #       turn_page(wheel, flipper)
 
 if __name__ == "__main__":
     command_queue = multiprocessing.Queue()
@@ -27,6 +28,6 @@ if __name__ == "__main__":
             time.sleep(0.1)  # Prevent CPU overuse
     except KeyboardInterrupt:
         print("Shutting down...")
-        servo_cleanup(servopin1, servopin2)
+        #servo_cleanup(servopin1, servopin2)
         recognize_process.terminate()
         recognize_process.join()
