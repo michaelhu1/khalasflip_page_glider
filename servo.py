@@ -27,7 +27,6 @@ def motoroff(wheel, flipper):
     flipper.ChangeDutyCycle(0) 
 
 def servo_cleanup(wheel, flipper):
-
     wheel.stop()   
     flipper.stop()             
     GPIO.cleanup()        
