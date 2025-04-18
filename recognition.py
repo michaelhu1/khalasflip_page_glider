@@ -8,6 +8,7 @@ def convert_second_word_to_number(text):
     number = w2n.word_to_num(second)
     return f"{first} {number}"
 
+# Callback function to process recognized audio and put commands in the queue
 def callback(recognizer, audio, command_queue):
     try:
         print("listening...")
@@ -31,13 +32,13 @@ def callback(recognizer, audio, command_queue):
     except sr.RequestError as e:
         print(f"Could not request results; {e}")
 
+# Function to start listening for commands in the background
 def start_listening(command_queue):
     r = sr.Recognizer()
-    r.energy_threshold = 6000
     m = sr.Microphone(device_index=2)
     
     with m as source:
-        r.adjust_for_ambient_noise(source, duration = 5)
+        r.adjust_for_ambient_noise(source, duration = 5) # Adjust for ambient noise, duration adjusts how long to listen to ambient noise in order to adapt the energy threshold.
 
     stop_listening = r.listen_in_background(m, lambda recognizer, audio: callback(recognizer, audio, command_queue),phrase_time_limit = 3)
 

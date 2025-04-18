@@ -1,7 +1,6 @@
 import RPi.GPIO as GPIO
 from time import sleep
 
-
 def initialize_motors(servo1, servo2):
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(servo1,GPIO.OUT)  
