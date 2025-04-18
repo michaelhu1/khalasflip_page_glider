@@ -50,3 +50,4 @@ The Page Glider is an automatic reader designed to assist the disabled, older re
 - **Speech not recognized**: Ensure background noise is minimized and you wait for the "listening..." prompt.
 - **Servos not moving**: Check power supply and GPIO pin numbers in `main.py` and `servo.py`.
 
+![A5ED89CB-6AF5-4124-9FFF-A80D6B743254_1_102_o](https://github.com/user-attachments/assets/af5bf63f-3a29-4e16-9f0b-d8e0f9baff6d)
