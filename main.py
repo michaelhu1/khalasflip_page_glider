@@ -21,6 +21,11 @@ def handle_command(command):
     if command == "stop":
         print("Exiting...")
         sys.exit()
+    if isinstance(command,int):
+        print(f"Turning {command} pages...")
+        for i in range(command):
+            turn_page(wheel, flipper)
+            sleep(2)
 
 if __name__ == "__main__":
     command_queue = multiprocessing.Queue()

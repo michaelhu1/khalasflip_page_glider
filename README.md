@@ -9,4 +9,5 @@ The Page Glider is an automatic reader designed to assist the disabled, older re
 4. Install SpeechRecognition using `pip install SpeechRecognition`
 5. Install PyAudio using `pip install PyAudio`
 6. Install CMUSphinx using `pip3 install pocketsphinx`
+7. Install word2number using `pip install word2number`
 

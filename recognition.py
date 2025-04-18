@@ -1,6 +1,12 @@
 import speech_recognition as sr
 import multiprocessing
 from time import sleep
+from word2number import w2n
+
+def convert_second_word_to_number(text):
+    first, second = text.split()
+    number = w2n.word_to_num(second)
+    return f"{first} {number}"
 
 def callback(recognizer, audio, command_queue):
     try:
@@ -10,10 +16,16 @@ def callback(recognizer, audio, command_queue):
 
         if "next" in command:
             print("Command recognized: Turning the page.")
-            command_queue.put("next")  # Send signal to main.py
+            command_queue.put("next")  
         elif "stop" in command:
             print("Command recognized: Stopping the program.")
             command_queue.put("stop")
+        if "turn" in command:
+            secondnumber = convert_second_word_to_number(command)
+            print(f"Command recognized: turning {secondnumber} pages")
+            command_queue.put(secondnumber)
+
+
     except sr.UnknownValueError:
         print("Sphinx Speech Recognition could not understand audio")
     except sr.RequestError as e:
