@@ -4,13 +4,16 @@ from time import sleep
 
 def callback(recognizer, audio, command_queue):
     try:
+        print("listening...")
         command = recognizer.recognize_sphinx(audio).lower()
-        print("Sphinx Speech Recognition thinks you said:", command)
+        print("Sphinx Recognition thinks you said:", command)
 
-        if command in ["next", "next page"]:
+        if "next" in command:
             print("Command recognized: Turning the page.")
             command_queue.put("next")  # Send signal to main.py
-
+        elif "stop" in command:
+            print("Command recognized: Stopping the program.")
+            command_queue.put("stop")
     except sr.UnknownValueError:
         print("Sphinx Speech Recognition could not understand audio")
     except sr.RequestError as e:
@@ -18,12 +21,13 @@ def callback(recognizer, audio, command_queue):
 
 def start_listening(command_queue):
     r = sr.Recognizer()
+    r.energy_threshold = 6000
     m = sr.Microphone(device_index=2)
     
     with m as source:
-        r.adjust_for_ambient_noise(source, duration = 1)
+        r.adjust_for_ambient_noise(source, duration = 5)
 
-    stop_listening = r.listen_in_background(m, lambda recognizer, audio: callback(recognizer, audio, command_queue),phrase_time_limit =1)
+    stop_listening = r.listen_in_background(m, lambda recognizer, audio: callback(recognizer, audio, command_queue),phrase_time_limit = 3)
 
     try:
         while True:

@@ -15,7 +15,7 @@ def initialize_motors(servo1, servo2):
     
 def turn_flipper(flipper):
     print("spinning flipper")
-    flipper.ChangeDutyCycle(7.5)  
+    flipper.ChangeDutyCycle(7.75)  
 
 def turn_wheel(wheel):
     print("spinning wheel")
