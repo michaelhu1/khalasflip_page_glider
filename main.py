@@ -53,3 +53,5 @@ if __name__ == "__main__":
         servo_cleanup(servopin1, servopin2)
         recognize_process.terminate()
         recognize_process.join()
+
+        

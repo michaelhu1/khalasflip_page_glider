@@ -38,3 +38,6 @@ def turn_page(wheel, flipper):
     turn_flipper(flipper)
     sleep(1.1)
     motoroff(wheel,flipper)
+
+
+    
